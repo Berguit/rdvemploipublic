@@ -1,5 +1,7 @@
 'use client';
 
+import FranceMap from './france-map';
+
 export default function MapRegionsSection() {
   const regions = [
     'Auvergne-Rhône-Alpes',
@@ -20,16 +22,9 @@ export default function MapRegionsSection() {
   return (
     <section className="py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Desktop - Carte placeholder */}
+        {/* Desktop - Carte interactive */}
         <div className="hidden md:block">
-          <div className="bg-white rounded-lg shadow-lg p-12 text-center border-2 border-dashed border-gray-300">
-            <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--brand-primary)' }}>
-              Carte interactive — bientôt disponible
-            </h2>
-            <p className="text-gray-600">
-              Une carte de France interactive pour explorer les offres par région sera bientôt disponible ici.
-            </p>
-          </div>
+          <FranceMap />
         </div>
 
         {/* Mobile - Grille des régions */}
