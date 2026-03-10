@@ -25,7 +25,7 @@
 
 ## Phase 0 — Fondations techniques ✅
 
-> Statut : FAIT (session du 8 mars 2026)
+> Statut : FAIT (sessions du 8-9 mars 2026)
 
 - [x] Repo GitHub créé (`Berguit/rdvemploipublic`)
 - [x] Next.js 15 + TypeScript + Tailwind + shadcn/ui
@@ -34,11 +34,12 @@
 - [x] POC scraping emploi-territorial validé (20/20 offres, 0 erreur)
 - [x] Structure grilles indiciaires analysée (emploi-collectivites.fr)
 - [x] Architecture validée : WordPress headless + Next.js front
+- [x] Déploiement preprod configuré (dev.rdvemploipublic.fr)
+- [x] Node.js v20 installé sur le serveur
 
 ### Reste à faire Phase 0
-- [ ] Configurer Supabase (nouveau projet ou réutiliser existant)
+- [ ] Configurer Supabase (nouveau projet dédié)
 - [ ] Connecter Next.js à l'API REST WordPress existant
-- [ ] Configurer le déploiement (Vercel ou VPS)
 - [ ] Mettre en place le `.env.local` avec toutes les clés
 
 ---
@@ -63,18 +64,18 @@
 - [ ] Full-text search index sur : titre, descriptif_emploi, missions, profil_recherche
 - [ ] RLS policies
 
-### 1.2 Scraper offres — script complet
-- [ ] Refactorer le POC en script production (`scripts/scrape-offres.js`)
-- [ ] Fixer le bug du mapping blocs texte (matcher par titres de section, pas par position)
-- [ ] Ajouter la gestion des erreurs, retries, rate limiting (1 req/500ms)
-- [ ] Logging + rapport d'exécution
-- [ ] Déduplication (vérifier si offre déjà en base par référence)
+### 1.2 Scraper offres — script complet ✅
+- [x] Refactorer le POC en script production (`scripts/scrape-offres.ts`)
+- [x] Fixer le bug du mapping blocs texte (matcher par titres de section, pas par position)
+- [x] Ajouter la gestion des erreurs, retries, rate limiting (1 req/500ms)
+- [x] Logging + rapport d'exécution
+- [x] Déduplication (vérifier si offre déjà en base par référence)
 - [ ] Détection des offres expirées (marquer status = 'expired')
 
-### 1.3 Bootstrap initial
-- [ ] Scraper les 1000 offres les plus récentes depuis la liste HTML
-- [ ] Scraper le détail complet de chacune
-- [ ] Insérer en base Supabase
+### 1.3 Bootstrap initial — ✅ (1000 offres scrapées le 10/03/2026)
+- [x] Scraper les 1000 offres les plus récentes depuis la liste HTML
+- [x] Scraper le détail complet de chacune → `data/offres.json`
+- [ ] Insérer en base Supabase (en attente config Supabase)
 
 ### 1.4 Collecte continue
 - [ ] Script RSS (`scripts/rss-sync.js`) : parse le flux toutes les heures
@@ -103,10 +104,11 @@
 - [ ] Table `echelons` : id, grade_id, echelon, indice_brut, indice_majore, duree, salaire_brut, salaire_net
 - [ ] Table `valeur_point` : date, valeur (4.92278 au 01/01/2024)
 
-### 2.2 Scraper grilles
-- [ ] Script `scripts/scrape-grilles.js`
-- [ ] Étape 1 : scraper les pages listing des 4 fonctions publiques → extraire filières + cadres d'emploi + liens
-- [ ] Étape 2 : pour chaque cadre d'emploi → scraper la page détail → extraire grades + échelons
+### 2.2 Scraper grilles ✅ (10/03/2026)
+- [x] Script `scripts/scrape-grilles.ts`
+- [x] Étape 1 : scraper les pages listing des 4 fonctions publiques → extraire filières + cadres d'emploi + liens
+- [x] Étape 2 : pour chaque cadre d'emploi → scraper la page détail → extraire grades + échelons
+- [x] 4 FP complètes : 40 filières, 1297 cadres, 2003 grades, 16262 échelons → `data/grilles.json`
 - [ ] Parser les tableaux HTML (échelon, indices, durée, salaires)
 - [ ] Gérer les cas spéciaux (échelons spéciaux HEA, grades en voie d'extinction)
 - [ ] Insérer en base Supabase

@@ -6,15 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "scrape:offres": "npx ts-node --project scripts/tsconfig.json scripts/scrape-offres.ts",
+    "rss:sync": "npx ts-node --project scripts/tsconfig.json scripts/rss-sync.ts",
+    "scrape:grilles": "npx tsx scripts/scrape-grilles.ts",
+    "scrape:grilles:dry": "npx tsx scripts/scrape-grilles.ts --dry-run",
+    "scrape:grilles:territoriale": "npx tsx scripts/scrape-grilles.ts territoriale"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
     "@svg-maps/france.departments": "^2.0.0",
+    "cheerio": "^1.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
+    "puppeteer-core": "^24.38.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "recharts": "^3.8.0",
@@ -30,6 +37,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
